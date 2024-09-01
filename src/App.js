@@ -6,6 +6,7 @@ function App() {
   const [location,setLocation] = useState('')
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=586e77bfd368f1ac88088c63f02fb78e`
   const [error, setError] = useState('');
+  const [showModal, setShowModal] = useState(false);
 
   const searchLocation = (event) => {
     if(event.key === 'Enter'){
@@ -21,9 +22,31 @@ function App() {
       setLocation('')
     }
   }
+  const handleInfoClick = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
   return (
     <div className="App">
+      <header>
+        <h1>Weather App</h1>
+        <p>Developed by Xavier Jackson</p>
+        <button id="info-button" onClick={handleInfoClick}>Info</button>
+      </header>
+      
+      {showModal && (
+        <div id="info-modal" className="modal">
+          <div className="modal-content">
+            <span className="close-button" onClick={handleCloseModal}>&times;</span>
+            <h2>PM Accelerator</h2>
+            <p>PM Accelerator is the premier AI learning and development hub, featuring award-winning AI products and mentors from top-tier companies such as Google, Meta, and Apple. We offer a dynamic AI PM Bootcamp, designed to empower the next generation of AI professionals through hands-on experience, mentorship, and real-world projects.</p>
+          </div>
+        </div>
+      )}
       <div className='search'>
         <input
         value={location}
