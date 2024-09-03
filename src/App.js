@@ -4,7 +4,7 @@ import axios from 'axios';
 function App() {
   const [data,setData] = useState({})
   const [location,setLocation] = useState('')
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=586e77bfd368f1ac88088c63f02fb78e`
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=INSERT_API_KEY`
   const [error, setError] = useState('');
   const [showModal, setShowModal] = useState(false);
 
